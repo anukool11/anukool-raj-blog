@@ -1,0 +1,62 @@
+{% extends "intro/layout.html"%}
+
+{% block body %}
+{% load static %}
+    <title>Anukool Raj</title>
+    <style>
+        .box{
+            padding-top: 10%;
+            text-align: center;
+        }
+        .head1{
+            line-height: 1.2px;
+        }
+        .image{
+            border-radius: 50%;
+            width: 150px;
+        }
+        .pinned-article-tile{
+            font-size: 1.25em;
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            text-align: center;
+            vertical-align: top;
+            transition: 0.4s;
+            margin: 20px;
+            padding: 20px;
+            /* border-left: 6px solid black;
+            background-color: rgb(212, 209, 209); */
+            border: 1px black;
+            border-style: dotted;
+            
+        }
+        .pinned:hover{
+            opacity: 70%;
+            text-decoration: underline;
+        }
+    </style>
+    <div class="box">
+        <img class ="image" src="{% static 'images/anukool.jpg' %}">
+        <h3 class="head1"> ANUKOOL RAJ </h3>
+        <p class="head4">INVESTOR | ANALYST | DEVELOPER</p>
+        <p class="head4">Good articles do not trick you with thrills or unknowns. Rather, they are the ones that seem familiar, like pages from your own diary. 
+            Yet, they are not yours' to keep. You have to share them with everyone. 
+        </p>
+        <br>
+        <br>
+        <hr>
+        <div class="pinned-article-container">
+            <h3 class="head4">PINNED POSTS</h3>
+            {% for article in Article %}
+                <div class="pinned-article-tile">
+                    <a class="pinned" style="color:black" href="{% url 'readarticle' article.article_no %}">{{article.title}}</a>
+                    <br>
+                    <p class="date">{{article.date|date:"M,Y"}}</p>
+                </div>
+            {% endfor %}
+            <br>
+            <br>
+        </div>
+    </div>
+{% endblock %}

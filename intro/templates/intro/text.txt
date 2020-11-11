@@ -1,0 +1,5 @@
+1. give margin both sides {margin:auto}
+2. use padding instead
+3. font in 
+
+@media for different sizes

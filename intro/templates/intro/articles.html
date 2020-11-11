@@ -1,0 +1,37 @@
+{% extends "intro/layout.html"%}
+
+{% block body %}
+<title>Anukool Raj | Articles</title>
+    <div class = "box">
+        <br>
+        <h3 class = "head1">ARCHIVE</h3>
+        <p class="head5">This is the archive of all my posts. Here you will find the list of all my articles, the book summaries I have compiled, and the movies I found disruptive enough to write about.</p>
+        <br>
+        <h3 class= "head3">ARTICLES</h3>
+        {% for article in Article %}
+            {% if article.tag == "World" %}
+                <a href="{% url 'readarticle' article.article_no %}" class="bookname">{{article.title}}</a>
+                <br>
+                <br>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <h3 class= "head3">SHORT SUMMARIES</h3>
+        {% for article in Article %}
+            {% if article.tag == "Summary" %}
+                <a href="{% url 'readarticle' article.article_no %}" class="bookname">{{article.title}}</a>
+                <br>
+                <br>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <h3 class= "head3">WHY SHOULD YOU WATCH</h3>
+        {% for article in Article %}
+            {% if article.tag == "Movie" %}
+                <a href="{% url 'readarticle' article.article_no %}" class="bookname">{{article.title}}</a>
+                <br>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

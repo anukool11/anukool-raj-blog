@@ -1,0 +1,98 @@
+{% extends "intro/layout.html"%}
+
+{% block body %}
+<title>Anukool Raj | Articles</title>
+    <style>
+        .head1{
+            font-size: 2.8125em;
+            word-wrap: break-word;
+        }
+        .fb-share-button{
+            padding: 3px;
+        }
+        .in-share{
+            padding: 3px;
+            display: inline-block;
+        }
+        .copy-link{
+            padding: 3px;
+            display: inline-block;
+            position: relative;
+            top: -6px;
+        }
+        #copy{
+            color: white;
+            background-color: black;
+            font-size: 0.75em;
+            outline: none;
+        }
+        #copy:hover{
+            cursor: pointer;
+        }
+        #myinput{
+            position: absolute;
+            top: -1000px;
+            left: -1000px;
+        }
+    </style>
+    <div class="box">
+        <br>
+        <div class="head1">
+            <h3>{{article.title}}</h3>
+        </div>
+        <p class="date">{{article.date}}</p>
+        
+        <!-- Load Facebook SDK for JavaScript -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        
+        <!-- Your share button code -->
+        <div class="fb-share-button" 
+        data-href="{% url 'readarticle' article.article_no %}" 
+        data-layout="button">
+        </div>
+        <!--LinkedIn share plugin-->
+        <div class="in-share">
+            <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+            <script type="IN/Share" data-url="{% url 'readarticle' article.article_no %}"></script>
+        </div>
+        <!--copy link-->
+        <div class="copy-link">
+            <script>
+                function myFunction() {
+                    /* Get the text field */
+                    var copyText = document.getElementById("myInput");
+                    copyText.value = window.location.href;
+
+                    /* Select the text field */
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+                    /* Copy the text inside the text field */
+                    document.execCommand("copy");
+
+                    /* Alert the copied text */
+                    //alert("Copied the text: " + copyText.value);
+                }
+            </script>
+            <button id = "copy" onclick="myFunction()">Copy Link</button>
+        </div>
+        <input type="text" value="location" id="myInput">
+        <hr>
+        <br>
+        <div class="description">
+            {{article.articletext|safe}}
+        </div>
+        <br>
+        <hr>
+        <br>
+    </div>
+    <br>
+    <br>
+{% endblock %}

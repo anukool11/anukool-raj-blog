@@ -7,6 +7,13 @@
             font-size: 2.8125em;
             word-wrap: break-word;
         }
+        #share-plugins{
+            vertical-align: top;
+        }
+        .fb-share-button{
+            vertical-align: top;
+            display: inline-block;
+        }
         .in-share{
             display: inline-block;
         }
@@ -29,18 +36,20 @@
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
         
-        <!-- Your share button code -->
-        <div class="fb-share-button" 
-        data-href="{% url 'readarticle' article.article_no %}" 
-        data-layout="button">
+        <div id="share-plugins">
+            <!-- Your share button code -->
+            <div class="fb-share-button" 
+            data-href="{% url 'readarticle' article.article_no %}" 
+            data-layout="button">
+            </div>
+            <!--LinkedIn share plugin-->
+            <div class="in-share">
+                <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                <script type="IN/Share" data-url="{% url 'readarticle' article.article_no %}"></script>
+            </div>
+            <!--Twitter share button-->
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-        <!--LinkedIn share plugin-->
-        <div class="in-share">
-            <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-            <script type="IN/Share" data-url="{% url 'readarticle' article.article_no %}"></script>
-        </div>
-        <!--Twitter share button-->
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <hr>
         <br>
         <div class="description">

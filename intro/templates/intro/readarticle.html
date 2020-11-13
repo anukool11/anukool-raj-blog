@@ -7,33 +7,10 @@
             font-size: 2.8125em;
             word-wrap: break-word;
         }
-        .fb-share-button{
-            padding: 3px;
-        }
         .in-share{
-            padding: 3px;
             display: inline-block;
         }
-        .copy-link{
-            padding: 3px;
-            display: inline-block;
-            position: relative;
-            top: -6px;
-        }
-        #copy{
-            color: white;
-            background-color: black;
-            font-size: 0.75em;
-            outline: none;
-        }
-        #copy:hover{
-            cursor: pointer;
-        }
-        #myinput{
-            position: absolute;
-            top: -1000px;
-            left: -1000px;
-        }
+
     </style>
     <div class="box">
         <br>
@@ -62,28 +39,8 @@
             <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
             <script type="IN/Share" data-url="{% url 'readarticle' article.article_no %}"></script>
         </div>
-        <!--copy link-->
-        <div class="copy-link">
-            <script>
-                function myFunction() {
-                    /* Get the text field */
-                    var copyText = document.getElementById("myInput");
-                    copyText.value = window.location.href;
-
-                    /* Select the text field */
-                    copyText.select();
-                    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-                    /* Copy the text inside the text field */
-                    document.execCommand("copy");
-
-                    /* Alert the copied text */
-                    //alert("Copied the text: " + copyText.value);
-                }
-            </script>
-            <button id = "copy" onclick="myFunction()">Copy Link</button>
-        </div>
-        <input type="text" value="location" id="myInput">
+        <!--Twitter share button-->
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <hr>
         <br>
         <div class="description">
